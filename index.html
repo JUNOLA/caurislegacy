@@ -22,6 +22,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Site icon (favicon) -->
+  <link rel="icon" type="image/png" href="cauris-logo.png" />
+
   <!-- Embedded styles. The palette, typography and layout are defined here. Feel free to tweak colours, spacing or fonts. -->
   <style>
     :root {
@@ -94,9 +97,8 @@
       width: 38px;
       height: 38px;
       border-radius: 999px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.20), transparent 45%),
-        linear-gradient(135deg, rgba(199,164,106,.95), rgba(143,108,60,.70));
+      /* Display the actual Cauris Legacy logo instead of a gold circle */
+      background: url("cauris-logo.png") center/contain no-repeat;
       box-shadow: 0 10px 24px rgba(199,164,106,.18);
       position: relative;
     }
