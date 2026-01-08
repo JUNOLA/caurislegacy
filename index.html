@@ -457,7 +457,8 @@
       position: relative;
     }
     .artist .img {
-      aspect-ratio: 16 / 10;
+      /* Use a square ratio to avoid stretching portrait images */
+      aspect-ratio: 1 / 1;
       background:
         linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.78)),
         url("jns.jpg") center/cover no-repeat;
@@ -899,12 +900,16 @@
           <article class="card">
             <h3>Legal (DE)</h3>
             <p>
-              Si tu veux être clean en Allemagne : ajoute un Impressum + Datenschutz.
-              Mets ici une version courte au début, puis tu l’amélioreras.
+              <strong>Impressum</strong><br/>
+              Cauris Legacy<br/>
+              Adresse&nbsp;: Darmstadt, Allemagne (à compléter)<br/>
+              Responsable du contenu&nbsp;: JNS<br/>
+              Contact&nbsp;: contact@caurislegacy.com
             </p>
             <div class="muteline"></div>
-            <p style="margin:0; color:var(--faint); font-size:12px; letter-spacing:1.2px; text-transform:uppercase;">
-              TODO : Impressum / Datenschutz
+            <p>
+              <strong>Datenschutz</strong><br/>
+              Ce site n’utilise pas de cookies de suivi. Les données transmises via le formulaire de contact ne sont utilisées que pour répondre à votre demande. Elles ne sont pas partagées avec des tiers. Pour toute question relative à la protection des données, vous pouvez nous contacter à l’adresse&nbsp;privacy@caurislegacy.com.
             </p>
           </article>
         </div>
