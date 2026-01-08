@@ -457,11 +457,11 @@
       position: relative;
     }
     .artist .img {
-      /* Use a square ratio to avoid stretching portrait images */
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 16 / 11; 
       background:
         linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.78)),
-        url("jns.jpg") center/cover no-repeat;
+        url("jns.jpg") no-repeat 50% 20% / cover;
+        
       border-bottom: 1px solid rgba(236,232,223,.10);
     }
     .artist .body { padding: 14px; }
@@ -624,7 +624,7 @@
           <h1>L’instinct du passé,<br/>l’empire de demain.</h1>
           <p>
             Cauris Legacy est une maison indépendante construite pour des projets musicaux cohérents — son,
-            visuel et narration. Rien n’est laissé au hasard.
+            visuel et narration. Chaqu'un sa vision des choses et celle de JNS est particulière, ça c’est sûr!.
           </p>
           <p style="margin-top:-8px; color: var(--faint); font-size: 12px; letter-spacing: 1.3px; text-transform: uppercase;">
             Darmstadt • Yaoundé • Paris
@@ -726,9 +726,17 @@
               Prod:&nbsp;Lil K1d Dean&nbsp;zing&nbsp;zing • Mix:&nbsp;Lukas du 237 • Cover:&nbsp;JNS
             </p>
             <div class="muteline"></div>
-            <div class="links">
-              <!-- Link to TikTok until the real smartlink is ready -->
-              <a class="link" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">Pre‑save</a>
+            
+            <div class="release-row">
+              <div class="release-info">
+                <p class="meta-line" style="margin:0;">
+                  <span>Succès</span><span>•</span><span>Sombre</span><span>•</span><span>Solitude</span>
+                </p>
+                <div class="links">
+                  <a class="link" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">Pre‑save</a>
+                  <a class="link" href="https://youtube.com/@jns27.official?si=Sv9LcgXgPKkVUCT5" target="_blank" rel="noopener">YouTube</a>
+                </div>
+              </div>
             </div>
           </article>
           <!-- III. Freestyle Nocturne (date updated to 20 Feb 2026) -->
@@ -739,6 +747,9 @@
               Prod:&nbsp;Lil K1d Dean&nbsp;zing&nbsp;zing • Mix:&nbsp;Lukas du 237 • Cover:&nbsp;JNS
             </p>
             <div class="muteline"></div>
+            <p>
+              Né d’une fin de soirée mouvementée, ce freestyle capture l'énergie brute et spontanée de JNS, entre ivresse et urgence créative.
+            </p>
             <div class="links">
               <!-- Link to TikTok until the real link (video or smartlink) is ready -->
               <a class="link" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">TikTok</a>
@@ -788,7 +799,7 @@
             <div class="body" style="padding:16px">
               <div class="kicker">Bio (vision)</div>
               <h3 class="name" style="margin-top:8px">Impact &amp; Vision</h3>
-              <p class="desc" style="margin-top:10px">
+              <p class="desc" style="margin-top:10px; white-space: pre-line;">
                 Forger son identité entre deux continents, c’est accepter une dualité constante.
                 JNS compte s'imposer dans le paysage francophone en cassant les codes : d’un côté,
                 la « street cred » glaciale et technique héritée de la League ; de l’autre,
@@ -809,7 +820,7 @@
           <article class="card">
             <h3>Influences</h3>
             <p>
-              <strong style="color:rgba(236,232,223,.92)">Musique :</strong> La Fouine, Damso, Ninho, Werenoi<br/>
+              <strong style="color:rgba(236,232,223,.92)">Musique :</strong> La Fouine, Damso, Ninho, Werenoi, Tupac<br/>
               <strong style="color:rgba(236,232,223,.92)">Cinéma :</strong> Will&nbsp;Smith<br/>
               <strong style="color:rgba(236,232,223,.92)">Personnalités :</strong> Ruben Um Nyobè, Qin Shi Huang Di<br/>
               <strong style="color:rgba(236,232,223,.92)">Littérature :</strong> Paulo Coelho
@@ -817,9 +828,11 @@
           </article>
           <article class="card">
             <h3>Thèmes récurrents</h3>
-            <p>
-              Ambition chiffrée • Dualité (27) • Solitude du leader (trahison / « vautours ») • Héritage
-              camerounais vs réalité européenne
+            <p style="white-space: pre-line;">
+              • Ambition chiffrée 
+              • Dualité (27) 
+              • Solitude du leader (trahison / « vautours ») 
+              • Héritage camerounais vs réalité européenne
             </p>
           </article>
         </div>
@@ -834,12 +847,12 @@
             <div class="kicker">The House</div>
             <div class="h2">About</div>
           </div>
-          <p class="sub">Label &amp; Publishing — direction artistique complète, standards élevés.</p>
+          <p class="sub">Label &amp; Publishing — direction artistique complète.</p>
         </div>
         <div class="triple">
           <article class="card">
             <h3>Vision</h3>
-            <p>Construire des projets cohérents : son, visuels, narration. Luxe minimal, caractère sombre.</p>
+            <p>Construire des projets cohérents : son, visuels, narration, remonter.</p>
           </article>
           <article class="card">
             <h3>Label</h3>
@@ -861,7 +874,6 @@
           </article>
           <article class="card">
             <h3>Brand Assets</h3>
-            <p>Logo Cauris Legacy (PNG transparent) :</p>
             <div class="muteline"></div>
             <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
               <img src="cauris-logo.png" alt="Cauris Legacy logo" style="height:56px; width:auto; opacity:.92;" />
@@ -880,12 +892,11 @@
             <div class="kicker">Professional</div>
             <div class="h2">Contact</div>
           </div>
-          <p class="sub">Simple. Pro. Réponse rapide.</p>
+          <p class="sub">Réponse rapide. N’hésitez pas</p>
         </div>
         <div class="cards">
           <article class="card">
             <h3>Emails</h3>
-            <p>Branche tes adresses ici (ou garde celles‑ci si tu les as créées).</p>
             <div class="muteline"></div>
             <div class="links">
               <a class="link" href="mailto:contact@caurislegacy.com">contact@caurislegacy.com</a>
@@ -898,12 +909,12 @@
             </p>
           </article>
           <article class="card">
-            <h3>Legal (DE)</h3>
+            <h3>Legal</h3>
             <p>
               <strong>Impressum</strong><br/>
               Cauris Legacy<br/>
-              Adresse&nbsp;: Darmstadt, Allemagne (à compléter)<br/>
-              Responsable du contenu&nbsp;: JNS<br/>
+              Adresse&nbsp;: Darmstadt, Allemagne<br/>
+              Responsable du contenu&nbsp;: Geordan<br/>
               Contact&nbsp;: contact@caurislegacy.com
             </p>
             <div class="muteline"></div>
@@ -934,7 +945,7 @@
             </span>
           </div>
           <p>
-            Maison indépendante — esthétique luxe sombre, storytelling, exécution millimétrée.
+            Maison indépendante — esthétique, storytelling, exécution millimétrée.
           </p>
         </div>
         <div>
