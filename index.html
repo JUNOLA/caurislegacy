@@ -6,26 +6,18 @@
   <meta name="theme-color" content="#0b0c10" />
   <title>Cauris Legacy — Label &amp; Publishing</title>
 
-  <!-- Meta description for SEO -->
-  <meta name="description" content="Cauris Legacy — label indépendant &amp; maison d'édition. JNS : Street‑Ciné, luxe‑sombre, storytelling. L'instinct du passé, l'empire de demain." />
-
-  <!-- OpenGraph tags (useful when sharing links) -->
+  <meta name="description" content="Cauris Legacy — label indépendant &amp; maison d'édition. JNS : Street‑Ciné, luxe‑sombre, storytelling." />
   <meta property="og:title" content="Cauris Legacy — Label &amp; Publishing" />
   <meta property="og:description" content="L'instinct du passé, l'empire de demain. JNS — Noir de Jais." />
   <meta property="og:type" content="website" />
-  <!-- When the site is published you can set the URL to your domain. -->
   <meta property="og:url" content="https://caurislegacy.com/" />
   <meta property="og:image" content="https://caurislegacy.com/noir-de-jais.png" />
 
-  <!-- Google fonts for the typefaces used. Remove these if you prefer a fully self‑hosted solution. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Site icon (favicon) -->
   <link rel="icon" type="image/png" href="cauris-logo.png" />
 
-  <!-- Embedded styles. The palette, typography and layout are defined here. Feel free to tweak colours, spacing or fonts. -->
   <style>
     :root {
       /* Colour palette */
@@ -50,19 +42,28 @@
 
     * { box-sizing: border-box; }
     html, body { height: 100%; }
+    
+    /* FIX: Empêche le flash blanc lors du scroll rapide */
+    html {
+      background-color: #07080c;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: var(--sans);
       color: var(--text);
-      /* Dark background with subtle radial highlights */
       background:
         radial-gradient(1200px 600px at 78% 10%, rgba(199,164,106,.10), transparent 55%),
         radial-gradient(900px 500px at 20% 15%, rgba(255,255,255,.06), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg2));
+      /* FIX: Background attachment fixed stabilise le dégradé */
+      background-attachment: fixed;
       overflow-x: hidden;
       letter-spacing: .2px;
     }
-    /* A slight grain overlay adds texture to the dark background */
+
+    /* Grain overlay */
     body::before {
       content: "";
       position: fixed;
@@ -72,15 +73,23 @@
       mix-blend-mode: overlay;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
       background-size: 240px 240px;
+      z-index: 999; 
     }
+    
     a { color: inherit; text-decoration: none; }
-    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    
+    .container { 
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto; 
+    }
+
     /* Top navigation bar */
     .topbar {
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: saturate(120%) blur(14px);
+      -webkit-backdrop-filter: saturate(120%) blur(14px);
       background: linear-gradient(180deg, rgba(7,8,12,.80), rgba(7,8,12,.35));
       border-bottom: 1px solid rgba(236,232,223,.08);
     }
@@ -97,10 +106,10 @@
       width: 38px;
       height: 38px;
       border-radius: 999px;
-      /* Display the actual Cauris Legacy logo instead of a gold circle */
       background: url("cauris-logo.png") center/contain no-repeat;
       box-shadow: 0 10px 24px rgba(199,164,106,.18);
       position: relative;
+      flex-shrink: 0;
     }
     .mark::after {
       content: "";
@@ -115,6 +124,7 @@
       text-transform: uppercase;
       font-size: 18px;
       line-height: 1;
+      white-space: nowrap;
     }
     .brand-tag {
       margin-top: 3px;
@@ -122,8 +132,10 @@
       letter-spacing: 1.1px;
       text-transform: uppercase;
       color: var(--faint);
+      white-space: nowrap;
     }
-    /* Hamburger for mobile */
+    
+    /* Hamburger */
     #menuToggle { display: none; }
     .burger {
       display: none;
@@ -135,6 +147,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      flex-shrink: 0;
     }
     .burger span {
       width: 18px;
@@ -154,6 +167,7 @@
     }
     .burger span::before { top: -6px; }
     .burger span::after { top: 6px; }
+    
     .navlinks {
       display: flex;
       gap: 18px;
@@ -183,7 +197,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 11px 14px;
+      padding: 11px 18px;
       border-radius: 999px;
       border: 1px solid rgba(236,232,223,.14);
       background: rgba(255,255,255,.03);
@@ -194,6 +208,7 @@
       transition: .18s ease;
       gap: 10px;
       white-space: nowrap;
+      cursor: pointer;
     }
     .btn:hover {
       transform: translateY(-1px);
@@ -209,6 +224,7 @@
       font-weight: 600;
     }
     .btn.ghost { background: transparent; }
+    
     .pill {
       display: inline-flex;
       align-items: center;
@@ -221,6 +237,7 @@
       letter-spacing: 1.0px;
       text-transform: uppercase;
       color: var(--muted);
+      margin-bottom: 12px;
     }
     .dot {
       width: 7px;
@@ -229,11 +246,11 @@
       background: var(--accent);
       box-shadow: 0 0 0 6px rgba(199,164,106,.14);
     }
+
     /* Hero section */
     .hero {
       padding: 62px 0 28px;
       position: relative;
-      overflow: hidden;
     }
     .hero .grid {
       display: grid;
@@ -243,8 +260,8 @@
     }
     .hero h1 {
       font-family: var(--serif);
-      font-size: clamp(40px, 6vw, 70px);
-      line-height: 1.0;
+      font-size: clamp(36px, 6vw, 70px);
+      line-height: 1.1;
       margin: 14px 0 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -318,6 +335,7 @@
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 16px;
+      flex-wrap: wrap;
     }
     .kicker {
       font-size: 12px;
@@ -339,13 +357,15 @@
       max-width: 72ch;
       margin: 0;
     }
-    .cards {
+    
+    /* Grids */
+    .cards, .artist-grid, .triple {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
       margin-top: 18px;
     }
-    .card {
+    .card, .artist {
       grid-column: span 6;
       border-radius: var(--radius);
       border: 1px solid rgba(236,232,223,.12);
@@ -355,6 +375,19 @@
       position: relative;
       overflow: hidden;
     }
+    .triple .card { grid-column: span 4; }
+    
+    /* Artist Images */
+    .artist { padding: 0; }
+    .artist .img {
+      aspect-ratio: 16 / 11; 
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.78)),
+        url("jns.jpg") no-repeat 50% 20% / cover;
+      border-bottom: 1px solid rgba(236,232,223,.10);
+    }
+    .artist .body { padding: 14px; }
+    
     .card::before {
       content: "";
       position: absolute;
@@ -366,14 +399,14 @@
       pointer-events: none;
     }
     .card > * { position: relative; }
-    .card h3 {
+    .card h3, .artist .name {
       margin: 0 0 8px;
       font-family: var(--serif);
       text-transform: uppercase;
       letter-spacing: 1.2px;
       font-size: 18px;
     }
-    .card p {
+    .card p, .artist .desc {
       margin: 0;
       color: var(--muted);
       font-size: 14px;
@@ -384,7 +417,6 @@
       background: rgba(236,232,223,.10);
       margin: 14px 0;
     }
-    /* Release row inside cards */
     .release-row {
       display: flex;
       gap: 14px;
@@ -405,17 +437,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-    }
-    .meta-line {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      color: rgba(236,232,223,.72);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.1px;
-      margin: 0;
+      min-width: 0;
     }
     .links {
       display: flex;
@@ -440,44 +462,6 @@
       border-color: rgba(199,164,106,.45);
       transform: translateY(-1px);
     }
-    /* Artist grid */
-    .artist-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-    .artist {
-      grid-column: span 6;
-      border-radius: var(--radius);
-      border: 1px solid rgba(236,232,223,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow: var(--shadow2);
-      overflow: hidden;
-      position: relative;
-    }
-    .artist .img {
-      aspect-ratio: 16 / 11; 
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.78)),
-        url("jns.jpg") no-repeat 50% 20% / cover;
-        
-      border-bottom: 1px solid rgba(236,232,223,.10);
-    }
-    .artist .body { padding: 14px; }
-    .artist .name {
-      font-family: var(--serif);
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      font-size: 18px;
-      margin: 0 0 6px;
-    }
-    .artist .desc {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
     .row {
       display: flex;
       justify-content: space-between;
@@ -491,14 +475,7 @@
       text-transform: uppercase;
       color: var(--faint);
     }
-    /* Three column about blocks */
-    .triple {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-    .triple .card { grid-column: span 4; }
+
     /* Footer */
     footer {
       padding: 34px 0 46px;
@@ -519,20 +496,8 @@
       font-size: 14px;
       color: rgba(236,232,223,.88);
     }
-    .foot p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-    .foot .links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 14px;
-    }
-    .foot a { color: var(--muted); }
-    .foot a:hover { color: var(--text); }
+    .foot p, .foot .links { font-size: 14px; line-height: 1.7; color: var(--muted); }
+    .foot .links { display: flex; flex-direction: column; gap: 10px; }
     .copyright {
       margin-top: 18px;
       color: var(--faint);
@@ -546,44 +511,82 @@
       border-top: 1px solid rgba(236,232,223,.08);
       padding-top: 16px;
     }
-    /* Responsive tweaks */
+
+    /* --------------------------------- */
+    /* MOBILE OPTIMIZATIONS (FIXED)      */
+    /* --------------------------------- */
+    
     @media (max-width: 980px) {
       .hero .grid { grid-template-columns: 1fr; }
+      .cards .card, .artist-grid .artist, .triple .card { grid-column: span 12; }
+      .brand { min-width: auto; } 
       .actions { min-width: auto; }
-      .card { grid-column: span 12; }
-      .artist { grid-column: span 12; }
-      .triple .card { grid-column: span 12; }
-      .foot { grid-template-columns: 1fr; }
+
+      /* FOOTER MOBILE LAYOUT - SPLIT COLUMNS */
+      .foot { 
+        grid-template-columns: 1fr 1fr; /* 2 colonnes */
+        gap: 0;
+        row-gap: 32px;
+      }
+      .foot-brand {
+        grid-column: span 2; /* Prend toute la largeur en haut */
+      }
+      .foot-explore {
+        border-right: 1px solid rgba(236,232,223,.10); /* LE TRAIT DE SÉPARATION */
+        padding-right: 20px;
+      }
+      .foot-social {
+        padding-left: 20px;
+      }
     }
+
     @media (max-width: 760px) {
+      /* Navigation Fixes */
+      .nav { flex-wrap: wrap; justify-content: space-between; }
       .navlinks { display: none; }
       .burger { display: flex; }
-      /* Show mobile nav when toggled */
+      .brand-tag { display: none; } 
+      .actions .btn.ghost { display: none; } 
+      
+      /* Mobile Menu Logic */
       #menuToggle:checked ~ .topbar .nav .navlinks {
         display: flex;
         position: absolute;
-        top: 64px;
-        left: 24px;
-        right: 24px;
+        top: 70px;
+        left: 0;
+        right: 0;
         flex-direction: column;
-        padding: 12px;
-        gap: 6px;
-        border-radius: 18px;
-        border: 1px solid rgba(236,232,223,.12);
-        background: rgba(7,8,12,.92);
-        box-shadow: var(--shadow2);
+        padding: 24px;
+        gap: 12px;
+        background: #0b0c10;
+        border-bottom: 1px solid rgba(236,232,223,.12);
+        box-shadow: 0 20px 40px rgba(0,0,0,.8);
+        z-index: 100;
       }
-      .hero { padding-top: 44px; }
-      .hero-card { padding: 14px; }
+      #menuToggle:checked ~ .topbar .nav .navlinks a {
+        width: 100%;
+        text-align: center;
+        background: rgba(255,255,255,.03);
+      }
+
+      section { padding: 32px 0; }
+      .hero { padding-top: 32px; }
+      .hero h1 { font-size: 42px; }
+      
+      .cover {
+        width: 70px; 
+        height: 70px;
+      }
+      .hero .btn { width: 100%; justify-content: center; }
     }
+    
     html { scroll-behavior: smooth; }
   </style>
 </head>
 
 <body>
-  <!-- Checkbox used to toggle the mobile menu (CSS‑only) -->
   <input id="menuToggle" type="checkbox" />
-  <!-- Navigation bar -->
+  
   <div class="topbar">
     <div class="container">
       <div class="nav">
@@ -594,33 +597,30 @@
             <div class="brand-tag">Label &amp; Publishing</div>
           </span>
         </a>
-        <!-- Mobile hamburger -->
-        <label class="burger" for="menuToggle" aria-label="Open menu"><span></span></label>
-        <!-- Desktop navigation links -->
+
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="actions">
+            <a class="btn ghost" href="#releases">Catalogue</a>
+            <a class="btn primary" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">Pre‑save</a>
+          </div>
+          <label class="burger" for="menuToggle" aria-label="Open menu"><span></span></label>
+        </div>
+
         <nav class="navlinks" aria-label="Primary">
           <a href="#artists">Artist</a>
           <a href="#releases">Releases</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
-        <!-- Call to action buttons on the right -->
-        <div class="actions">
-          <!-- Catalogue button links to releases section -->
-          <a class="btn ghost" href="#releases">Catalogue</a>
-          <!-- Pre‑save button links to the artist's TikTok (until the real smartlink is available) -->
-          <a class="btn primary" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">Pre‑save</a>
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- Hero / landing section -->
   <header id="home" class="hero">
     <div class="container">
       <div class="grid">
-        <!-- Intro text column -->
         <div>
-          <span class="pill"><span class="dot"></span> Street‑Ciné • Luxe‑Sombre • Storytelling</span>
+          <span class="pill"><span class="dot"></span> Label • Publishing • Storytelling</span>
           <h1>L’instinct du passé,<br/>l’empire de demain.</h1>
           <p>
             Maison indépendante, Cauris Legacy fusionne son, visuel et narration pour créer des projets cohérents. Si chacun a sa vision, celle de JNS est indéniablement unique.
@@ -628,7 +628,6 @@
           <p style="margin-top:-8px; color: var(--faint); font-size: 12px; letter-spacing: 1.3px; text-transform: uppercase;">
             Darmstadt • Yaoundé • Paris
           </p>
-          <!-- Social links -->
           <div class="links" style="margin-top:14px">
             <a class="link" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">TikTok</a>
             <a class="link" href="https://www.instagram.com/jns27.official/" target="_blank" rel="noopener">Instagram</a>
@@ -640,14 +639,12 @@
             <strong style="color:rgba(236,232,223,.92)">JNS</strong> fusionne efficacité et introspection. 
             Rien n'est laissé au hasard : <strong style="color:rgba(236,232,223,.92)">tout est Dju‑No</strong>.
           </p>
-          <!-- Buttons under the intro -->
           <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
             <a class="btn primary" href="#releases">Voir les sorties</a>
             <a class="btn" href="#artists">Profil artiste</a>
-            <a class="btn" href="#contact">Contact pro</a>
+            <a class="btn" href="#contact">Contact</a>
           </div>
         </div>
-        <!-- Latest release card -->
         <aside class="hero-card" id="latest" aria-label="Latest release">
           <div class="frame">
             <div>
@@ -670,7 +667,6 @@
                 Prod:&nbsp;Lil K1d Dean&nbsp;zing&nbsp;zing • Mix:&nbsp;Lukas du 237 • Cover:&nbsp;JNS
               </p>
               <div class="links">
-                <!-- Pre‑save link pointing to TikTok for now -->
                 <a class="link" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">Pre‑save</a>
                 <a class="link" href="#contact">Press&nbsp;/&nbsp;Booking</a>
               </div>
@@ -685,7 +681,6 @@
   </header>
 
   <main>
-    <!-- Releases section -->
     <section id="releases">
       <div class="container">
         <div class="section-head">
@@ -696,7 +691,6 @@
           <p class="sub">Trois chapitres. Même direction. Exécution millimétrée.</p>
         </div>
         <div class="cards">
-          <!-- I. Noir de Jais -->
           <article class="card">
             <h3>I. Noir de Jais</h3>
             <p>
@@ -717,7 +711,6 @@
               </div>
             </div>
           </article>
-          <!-- II. Vision Panoramique (date updated to 6 Feb 2026) -->
           <article class="card">
             <h3>II. Vision Panoramique</h3>
             <p>
@@ -725,7 +718,6 @@
               Prod:&nbsp;Lil K1d Dean&nbsp;zing&nbsp;zing • Mix:&nbsp;Lukas du 237 • Cover:&nbsp;JNS
             </p>
             <div class="muteline"></div>
-            
             <div class="release-row">
               <div class="release-info">
                 <p class="meta-line" style="margin:0;">
@@ -738,7 +730,6 @@
               </div>
             </div>
           </article>
-          <!-- III. Freestyle Nocturne (date updated to 20 Feb 2026) -->
           <article class="card">
             <h3>III. Freestyle Nocturne</h3>
             <p>
@@ -747,18 +738,16 @@
             </p>
             <div class="muteline"></div>
             <p>
-              Né d’une fin de soirée mouvementée, ce freestyle capture l'énergie brute et spontanée de JNS, entre ivresse et urgence créative.
+              Né d’un excès nocturne, ce freestyle capture l'énergie brute et spontanée de JNS, entre 2~ verres et urgence créative.
             </p>
             <div class="links">
-              <!-- Link to TikTok until the real link (video or smartlink) is ready -->
               <a class="link" href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">TikTok</a>
             </div>
           </article>
-          <!-- Press kit placeholder -->
           <article class="card">
             <h3>EPK (Press Kit)</h3>
             <p>
-              Un PDF 1 page : bio, photos presse, liens, contacts, discographie. Demandez‑le pour la presse ou les bookings.
+              Un PDF 1 page : bio, photos presse, liens, contacts, discographie. Demandez‑le pour la presse ou les bookings.
             </p>
             <div class="muteline"></div>
             <a class="btn primary" href="#contact">Demander l’EPK</a>
@@ -767,7 +756,6 @@
       </div>
     </section>
 
-    <!-- Artist section -->
     <section id="artists">
       <div class="container">
         <div class="section-head">
@@ -775,17 +763,17 @@
             <div class="kicker">Artist</div>
             <div class="h2">JNS</div>
           </div>
-          <p class="sub">« Dju‑No » comme sceau de qualité. Dualité assumée. Ambition chiffrée.</p>
+          <p class="sub">« Dju‑No » comme sceau de qualité. Dualité assumée. Ambition chiffrée.</p>
         </div>
         <div class="artist-grid">
-          <!-- Artist card with photo -->
           <article class="artist">
             <div class="img" role="img" aria-label="JNS press photo"></div>
             <div class="body">
               <h3 class="name">Bio courte</h3>
               <p class="desc">
-                JNS est l’architecte d’un rap hybride entre Passion et Code, fusionnant l’efficacité du hit
-                et la noirceur de l’introspection. Rien n’est laissé au hasard — tout est Dju‑No.
+                Architecte d’un rap hybride entre Passion et Code, 
+                <strong style="color:rgba(236,232,223,.92)">JNS</strong> fusionne efficacité et introspection. 
+                Rien n'est laissé au hasard : <strong style="color:rgba(236,232,223,.92)">tout est Dju‑No</strong>.
               </p>
               <div class="row">
                 <span class="tiny">Darmstadt • Yaoundé • Paris</span>
@@ -793,18 +781,17 @@
               </div>
             </div>
           </article>
-          <!-- Detailed bio card -->
           <article class="artist">
             <div class="body" style="padding:16px">
               <div class="kicker">Bio (vision)</div>
               <h3 class="name" style="margin-top:8px">Impact &amp; Vision</h3>
               <p class="desc" style="margin-top:10px; white-space: pre-line;">
                 Forger son identité entre deux continents, c’est accepter une dualité constante.
-                JNS compte s'imposer dans le paysage francophone en cassant les codes : 
-                  - d’un côté la « street cred » glaciale et technique héritée de la League 
+                JNS compte s'imposer dans le paysage francophone en cassant les codes : 
+                  - d’un côté la « street cred » glaciale et technique héritée de la League 
                   - de l’autre une mélancolie sombre qui rappelle les heures les plus denses du hip-hop.
-                Portant le dossard 27 comme symbole de singularité et le chiffre 7 comme boussole spirituelle, il transforme le bitume en théâtre cinématographique. 
-                Son gimmick « Dju‑No » résonne comme un sceau de qualité sur des prods millimétrées. 
+                Portant le dossard 27 comme symbole de singularité et le chiffre 7 comme boussole spirituelle, il transforme le bitume en théâtre cinématographique. 
+                Son gimmick « Dju‑No » résonne comme un sceau de qualité sur des prods millimétrées. 
                 Entre ambition démesurée et solitude assumée, JNS ne cherche pas la lumière il apprend à dompter l’ombre pour mieux régner.
               </p>
               <div class="muteline"></div>
@@ -818,25 +805,23 @@
           <article class="card">
             <h3>Influences</h3>
             <p>
-              <strong style="color:rgba(236,232,223,.92)">Musique :</strong> La Fouine, Damso, Ninho, Werenoi, Tupac<br/>
-              <strong style="color:rgba(236,232,223,.92)">Cinéma :</strong> Will&nbsp;Smith<br/>
-              <strong style="color:rgba(236,232,223,.92)">Personnalités :</strong> Ruben Um Nyobè, Qin Shi Huang Di<br/>
-              <strong style="color:rgba(236,232,223,.92)">Littérature :</strong> Paulo Coelho
+              <strong style="color:rgba(236,232,223,.92)">Musique :</strong> La Fouine, Damso, Ninho, Werenoi, Tupac<br/>
+              <strong style="color:rgba(236,232,223,.92)">Cinéma :</strong> Will&nbsp;Smith<br/>
+              <strong style="color:rgba(236,232,223,.92)">Personnalités :</strong> Ruben Um Nyobè, Qin Shi Huang Di<br/>
+              <strong style="color:rgba(236,232,223,.92)">Littérature :</strong> Paulo Coelho
             </p>
           </article>
           <article class="card">
-            <h3>Thèmes récurrents</h3>
-            <p style="white-space: pre-line;">• Ambition chiffrée 
-              • Dualité (27) 
-              • Solitude du leader (trahison / « vautours ») 
-              • Héritage camerounais vs réalité européenne
-            </p>
+            <h3 style="margin-bottom: 0;">Thèmes récurrents</h3>
+            <p style="white-space: pre-line; margin-top: 5px;">• Ambition chiffrée 
+            • Dualité (27) 
+            • Solitude du leader 
+            • Héritage camerounais vs réalité européenne</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- About section -->
     <section id="about">
       <div class="container">
         <div class="section-head">
@@ -849,7 +834,7 @@
         <div class="triple">
           <article class="card">
             <h3>Vision</h3>
-            <p>Construire des projets cohérents : son, visuels, narration, remonter.</p>
+            <p>Construire des projets cohérents : son, visuels, narration, remonter.</p>
           </article>
           <article class="card">
             <h3>Label</h3>
@@ -863,10 +848,10 @@
         <div class="cards">
           <article class="card">
             <h3>Statement</h3>
-            <p><em style="color:rgba(236,232,223,.88)">« L’instinct du passé, l’empire de demain. »</em></p>
+            <p><em style="color:rgba(236,232,223,.88)">« L’instinct du passé, l’empire de demain. »</em></p>
             <div class="muteline"></div>
             <p style="margin:0; color:var(--faint); font-size:12px; letter-spacing:1.2px; text-transform:uppercase;">
-              Submissions : closed (on invitation only)
+              Submissions : closed (on invitation only)
             </p>
           </article>
           <article class="card">
@@ -881,7 +866,6 @@
       </div>
     </section>
 
-    <!-- Contact section -->
     <section id="contact">
       <div class="container">
         <div class="section-head">
@@ -929,11 +913,10 @@
     </section>
   </main>
 
-  <!-- Footer section -->
   <footer>
     <div class="container">
       <div class="foot">
-        <div>
+        <div class="foot-brand">
           <div class="brand" style="padding:0">
             <span class="mark" aria-hidden="true"></span>
             <span>
@@ -945,7 +928,7 @@
             Maison indépendante — esthétique, storytelling, exécution millimétrée.
           </p>
         </div>
-        <div>
+        <div class="foot-explore">
           <h4>Explore</h4>
           <div class="links">
             <a href="#artists">Artist</a>
@@ -954,7 +937,7 @@
             <a href="#contact">Contact</a>
           </div>
         </div>
-        <div>
+        <div class="foot-social">
           <h4>Social</h4>
           <div class="links">
             <a href="https://www.tiktok.com/@jns.officiel" target="_blank" rel="noopener">TikTok</a>
@@ -965,12 +948,19 @@
       </div>
       <div class="copyright">
         <span>© <span id="year">2026</span> Cauris Legacy</span>
-        <span>« Dju‑No » quality seal</span>
+        <span>« Dju‑No » quality seal</span>
       </div>
     </div>
     <script>
-      // Update year automatically in the footer
       document.getElementById("year").textContent = new Date().getFullYear();
+      
+      // AUTO CLOSE MOBILE MENU
+      // Ce script ferme le menu hamburger automatiquement quand on clique sur un lien
+      document.querySelectorAll('.navlinks a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('menuToggle').checked = false;
+        });
+      });
     </script>
   </footer>
 </body>
